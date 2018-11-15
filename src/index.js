@@ -6,10 +6,10 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from "react-redux";
 import {applyMiddleware, createStore} from "redux"
 import thunk from "redux-thunk"
-import restaurantReducer from './reducers/restaurantsReducer'
+import restaurants from './reducers/restaurantsReducer'
 import { BrowserRouter, Route } from 'react-router-dom'
 
-const store = createStore(restaurantReducer, applyMiddleware(thunk))
+const store = createStore(restaurants, applyMiddleware(thunk))
 
 ReactDOM.render(
 <Provider store={store}>

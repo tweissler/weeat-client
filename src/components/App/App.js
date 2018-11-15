@@ -4,9 +4,7 @@ import Header from '../Header/Header';
 import FiltersBar from "../FilterBar/FiltersBar";
 import RestaurantsList from "../RestaurantsList/RestaurantsList";
 import {connect} from "react-redux";
-
 import {fetchRestaurants} from "../../actions/restaurantsActions";
-
 
 class App extends Component {
 

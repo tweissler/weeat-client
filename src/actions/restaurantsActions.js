@@ -14,14 +14,20 @@ export function fetchRestaurants(url) {
 }
 
 export function addRestaurant(url, body) {
+    var formBody = [];
+    for (var property in body) {
+        var encodedKey = encodeURIComponent(property);
+        var encodedValue = encodeURIComponent(body[property]);
+        formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
     return function(dispatch){
         fetch(url,  {
             method: 'post',
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
             },
-            body: JSON.stringify(body)})
+            body: formBody})
             .then(res => res.json())
             .then(
                 (result) => {

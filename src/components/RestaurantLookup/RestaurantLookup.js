@@ -21,7 +21,7 @@ class RestaurantLookup extends Component {
     render() {
         return (
             <form>
-                <input className="restaurant-lookup" type="text" value={this.state.value} onChange={this.handleChange} />
+                <input className="restaurant-lookup" placeholder="Find a restaurant" type="text" value={this.state.value} onChange={this.handleChange} />
             </form>
         );
     }
