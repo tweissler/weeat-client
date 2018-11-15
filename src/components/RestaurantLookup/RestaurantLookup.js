@@ -4,13 +4,14 @@ import './RestaurantLookup.css'
 class RestaurantLookup extends Component {
     constructor(props){
         super(props);
-        this.value = ""
+        this.state = {value: ""}
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(event) {
-        this.value = this.capitalize(event.target.value);
-        this.props.passQueryParam("by_name", this.value);
+        var newVal = this.capitalize(event.target.value);
+        this.setState({value: newVal});
+        this.props.passQueryParam("by_name", newVal);
     }
 
     capitalize(text){
@@ -20,7 +21,7 @@ class RestaurantLookup extends Component {
     render() {
         return (
             <form>
-                <input className="restaurant-lookup" type="text" value={this.value} onChange={this.handleChange} />
+                <input className="restaurant-lookup" type="text" value={this.state.value} onChange={this.handleChange} />
             </form>
         );
     }
