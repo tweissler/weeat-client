@@ -1,0 +1,17 @@
+.restaurant-lookup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: inherit;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    -webkit-padding-start: 8px;
+    -moz-padding-start: 8px;
+    text-align: left;
+    font-weight: bold;
+    position:relative;
+    width:500px;
+    color: dimgrey;
+    margin: 30px;
+}
