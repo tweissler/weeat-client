@@ -9,14 +9,10 @@ class Restaurant extends Component {
         return (
             <tr className='rest'>
                 <td className='cuisine'>{ rest.cuisine }</td>
-                <td>
-                    <>
-                        <td className='rest-name'>{rest.name}
-                            {rest.tenbis ? <img src={require('../../images/tenbis.jpg')} className='tenbis'/> : null}
-                        </td>
+                    <td className='rest-name'>{rest.name}
+                        {rest.tenbis ? <img src={require('../../images/tenbis.jpg')} className='tenbis'/> : null}
                         <Rating rating={rest.rating}/>
-                    </>
-                </td>
+                    </td>
             </tr>
         );
     }

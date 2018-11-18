@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Restaurant from '../Restaurant/Restaurant';
 import './RestaurantsList.css'
+import PropTypes from 'prop-types';
 
 class RestaurantsList extends Component {
 
@@ -11,12 +12,16 @@ class RestaurantsList extends Component {
             <div className="restaurants-list">
                 <table>
                     {restaurants.map(rest => {
-                        return <Restaurant rest={rest}/>
+                        return <Restaurant key={rest.name} rest={rest}/>
                     })}
                 </table>
             </div>
         );
     }
 }
+
+RestaurantsList.propTypes = {
+    restaurants: PropTypes.array
+};
 
 export default RestaurantsList;

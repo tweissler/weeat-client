@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './Rating.css'
+import './Rating.css';
+import {RATING_OPTIONS} from '../FilterBar/FiltersBar';
 
 class Rating extends Component {
     render() {
@@ -7,8 +8,11 @@ class Rating extends Component {
 
         return (
             <div>
-                <span className='rating'>Rating: </span><span hidden={rating<1}>⭐</span>
-                <span hidden={rating<2}>⭐</span><span hidden={rating<3}>⭐</span>
+                <span className='rating'>Rating:
+                    {RATING_OPTIONS.map(function(r) {
+                        return <span hidden={rating<r}>⭐</span>
+                    })}
+                </span>
             </div>
         );
     }

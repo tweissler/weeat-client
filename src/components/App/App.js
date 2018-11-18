@@ -4,27 +4,23 @@ import Header from '../Header/Header';
 import FiltersBar from "../FilterBar/FiltersBar";
 import RestaurantsList from "../RestaurantsList/RestaurantsList";
 import {connect} from "react-redux";
-import {fetchRestaurants} from "../../actions/restaurantsActions";
+import {fetchRestaurants, changeUrl} from "../../actions/restaurantsActions";
 
 class App extends Component {
 
-    constructor(props){
-        super(props);
-        this.addQueryParam = this.addQueryParam.bind(this);
-        this.url = new URL("http://0.0.0.0:3000/restaurants");
-    }
-
     componentDidMount() {
-        this.props.fetchRestaurants(this.url);
+        this.props.fetchRestaurants(this.props.url);
     }
 
-    addQueryParam(paramToAdd, valueToAdd){
+    addQueryParam = (paramToAdd, valueToAdd) => {
+        let newUrl = this.props.url;
         if(valueToAdd) {
-            this.url.searchParams.set(paramToAdd, valueToAdd);
+            newUrl.searchParams.set(paramToAdd, valueToAdd);
         } else {
-            this.url.searchParams.delete(paramToAdd);
+            newUrl.searchParams.delete(paramToAdd);
         }
-        this.props.fetchRestaurants(this.url);
+        this.props.changeUrl(newUrl);
+        this.props.fetchRestaurants(newUrl);
     }
 
     render() {
@@ -50,17 +46,19 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-    return({
+    return{
         restaurants: state.restaurants,
         isLoaded: state.isLoaded,
         error: state.error,
-    })
+        url: state.url,
+    }
 }
 
 const mapDispatchToProps = dispatch => {
-    return({
-        fetchRestaurants: (url) => dispatch(fetchRestaurants(url))
-    })
+    return{
+        fetchRestaurants: (url) => dispatch(fetchRestaurants(url)),
+        changeUrl: (newUrl) => dispatch(changeUrl(newUrl))
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

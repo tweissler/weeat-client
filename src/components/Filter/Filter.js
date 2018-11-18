@@ -2,16 +2,12 @@ import React, { Component } from 'react';
 import './Filter.css'
 
 class Filter extends Component {
-    constructor(props){
-        super(props);
-        this.handleFilterChange = this.handleFilterChange.bind(this);
-    }
 
     handleFilterChange = (event) => {
         this.props.onSelectFilter(this.props.type, event.target.value);
     }
 
-    removePrefix(text){
+    removePrefix = (text) => {
         var arr = text.split("_");
         arr.splice(0,1);
         var string = arr.join(" ");
@@ -27,7 +23,7 @@ class Filter extends Component {
                 <select className="filter-select" onChange={this.handleFilterChange} value={this.value}>
                     <option value="">I don't care</option>
                     {options.map(op => {
-                        return <option value={op}>{op}</option>
+                        return <option key={`options-${op}`} value={op}>{op}</option>
                     })}
                 </select>
             </div>

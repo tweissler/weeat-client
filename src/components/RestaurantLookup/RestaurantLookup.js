@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import './RestaurantLookup.css'
 
+function capitalize (text){
+    return text.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
+}
+
 class RestaurantLookup extends Component {
     constructor(props){
         super(props);
         this.state = {value: ""}
-        this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(event) {
-        var newVal = this.capitalize(event.target.value);
+    handleChange = (event) => {
+        var newVal = capitalize(event.target.value);
         this.setState({value: newVal});
         this.props.passQueryParam("by_name", newVal);
-    }
-
-    capitalize(text){
-         return text.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
     }
 
     render() {
