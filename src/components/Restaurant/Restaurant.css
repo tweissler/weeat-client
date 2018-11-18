@@ -17,14 +17,14 @@
     color: black;
     border-collapse: collapse;
     border-style: hidden;
-    width: 600px;
+    width: 500px;
     justify-content: left;
 }
 
 .rest{
+    display: flex;
+    justify-content: space-between;
     background-color: white;
-    /*display: flex;*/
-    /*justify-content: space-between;*/
 }
 
 .tenbis{

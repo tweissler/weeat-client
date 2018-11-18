@@ -5,6 +5,7 @@ import FiltersBar from "../FilterBar/FiltersBar";
 import RestaurantsList from "../RestaurantsList/RestaurantsList";
 import {connect} from "react-redux";
 import {fetchRestaurants, changeUrl} from "../../actions/restaurantsActions";
+import Map from "../Map/Map";
 
 class App extends Component {
 
@@ -36,7 +37,7 @@ class App extends Component {
                     <FiltersBar addQueryParam={this.addQueryParam}/>
                     <div className="main">
                         <RestaurantsList restaurants={restaurants}/>
-                        <div className="map">Map placeholder</div>
+                        <Map restaurants={restaurants}/>
                     </div>
                 </>
             );
