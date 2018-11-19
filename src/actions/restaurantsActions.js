@@ -1,4 +1,4 @@
-import { createAction, handleActions } from 'redux-actions';
+import { createAction } from 'redux-actions';
 
 export const FETCH_RESTAURANTS_FULFILLED = 'FETCH_RESTAURANTS_FULFILLED';
 export const FETCH_RESTAURANTS_REJECTED = 'FETCH_RESTAURANTS_REJECTED';
@@ -6,12 +6,11 @@ export const ADD_RESTAURANT_FULFILLED = 'ADD_RESTAURANT_FULFILLED';
 export const ADD_RESTAURANT_REJECTED = 'ADD_RESTAURANT_REJECTED';
 export const CHANGE_URL = 'CHANGE_URL';
 
-
 const fetchRestaurantSuccess = createAction(FETCH_RESTAURANTS_FULFILLED);
-const fetchRestaurantfaliure = createAction(FETCH_RESTAURANTS_REJECTED);
+const fetchRestaurantFaliure = createAction(FETCH_RESTAURANTS_REJECTED);
 
 const addRestaurantSuccess = createAction(ADD_RESTAURANT_FULFILLED);
-const addRestaurantfaliure = createAction(ADD_RESTAURANT_REJECTED);
+const addRestaurantFaliure = createAction(ADD_RESTAURANT_REJECTED);
 
 export const fetchRestaurants = url => (
     function(dispatch){
@@ -22,7 +21,7 @@ export const fetchRestaurants = url => (
                     dispatch(fetchRestaurantSuccess(result))
                 },
                 (error) => {
-                    dispatch(fetchRestaurantfaliure(error))
+                    dispatch(fetchRestaurantFaliure(error))
                 }
             )
     });
@@ -48,7 +47,7 @@ export const addRestaurant = (url, body) => (
                     dispatch(addRestaurantSuccess(result))
                 },
                 (error) => {
-                    dispatch(addRestaurantfaliure(error))
+                    dispatch(addRestaurantFaliure(error))
                 }
             )
     });

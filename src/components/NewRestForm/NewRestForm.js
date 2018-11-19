@@ -13,45 +13,33 @@ class NewRestForm extends Component {
                 <h1 className='add-rest'>Fill out restaurant details:</h1>
                 <form onSubmit={handleSubmit(handleAddRestaurant)}>
                     <div>
-                        <label className='label'>Restaurant Name</label>
-                        <div>
-                            <Field className='input' name="name" component="input" type="text" placeholder="Restaurant Name"/>
-                        </div>
+                        <Field className='input' name="name" component={RenderInput} type="text" placeholder="Restaurant Name" label="Restaurant Name"/>
                     </div>
                     <div>
-                        <label className='label'>Address</label>
-                        <div>
-                            <Field className='input' name="address" component="input" type="text" placeholder="Address"/>
-                        </div>
+                        <Field className='input' name="address" component={RenderInput} type="text" placeholder="Address" label="Address"/>
                     </div>
                     <div>
-                        <label className='label'>Cuisine</label>
-                        <div>
-                            <Field className='select' name="cuisine" component="select">
-                                <option></option>
-                                {cuisines.map(op => {
-                                    return <option key={`options-${op}`} value={op}>{op}</option>
-                                })}
-                            </Field>
-                        </div>
+                        <Field className='select' name="cuisine" component={RenderSelect} label="cuisine">
+                            <option></option>
+                            {cuisines.map(op => {
+                                return <option key={`options-${op}`} value={op}>{op}</option>
+                            })}
+                        </Field>
                     </div>
                     <div>
-                        <label className='label'>Delivery Time</label>
-                        <div>
-                            <Field className='select' name="deliveryTime" component="select">
-                                <option></option>
-                                {DELIVERY_TIMES.map(op => {
-                                    return <option key={`options-${op}`} value={op}>{op}</option>
-                                })}
-                            </Field>
-                        </div>
+                        <Field className='select' name="deliveryTime" component={RenderSelect} label="Delivery time">
+                            <option></option>
+                            {DELIVERY_TIMES.map(op => {
+                                return <option key={`options-${op}`} value={op}>{op}</option>
+                            })}
+                        </Field>
                     </div>
                     <div>
                         <Field className='check-box' name="tenbis" id="tenbis" component="input" type="checkbox"/>
                         <label className='label' htmlFor="tenbis">Supports 10bis</label>
                     </div>
                     <div className='buttons'>
-                        <button className='button' type="submit">Add</button>
+                        <button className='button' type="submit"  disabled={submitting}>Add</button>
                         <button className='button' type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
                         <button className='button' type="button" onClick={closeDialog}>Cancel</button>
                     </div>
@@ -61,6 +49,45 @@ class NewRestForm extends Component {
     }
 }
 
+const RenderInput = ({input, label, type, meta: { touched, error }}) => (
+    <div>
+        <label className='label'>{label}</label>
+        {touched && (error && <span className='error'>*{error}</span>)}
+        <div>
+            <input className='input' {...input} placeholder={label} type={type} />
+        </div>
+    </div>
+)
+
+const RenderSelect = ({input, label, type, meta: { touched, error }, children}) => (
+    <div>
+        <label className='label'>{label}</label>
+        {touched && (error && <span className='error'>*{error}</span>)}
+        <div>
+            <select className='select' {...input} placeholder={label} type={type} >
+                {children}
+            </select>
+        </div>
+    </div>
+)
+
+const validate = values => {
+    const errors = {}
+    if (!values.name) {
+        errors.name = 'This field is required'
+    }
+    if (!values.cuisine) {
+        errors.cuisine = 'This field is required'
+    }
+    if (!/^([-+]?)([\d]{1,2})(((\.)(\d+)))(\s*)(([-+]?)([\d]{1,3})((\.)(\d+))?)$/i.test(values.address)) {
+        errors.address = 'Address must contain valid coordinates (eg. 35.1863 -74.2648)'
+    }
+    return errors
+}
+
+
+
 export default reduxForm({
-    form: 'add-rest'
+    form: 'add-rest',
+    validate
 })(NewRestForm)
