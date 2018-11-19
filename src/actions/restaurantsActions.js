@@ -1,8 +1,17 @@
+import { createAction, handleActions } from 'redux-actions';
+
 export const FETCH_RESTAURANTS_FULFILLED = 'FETCH_RESTAURANTS_FULFILLED';
 export const FETCH_RESTAURANTS_REJECTED = 'FETCH_RESTAURANTS_REJECTED';
 export const ADD_RESTAURANT_FULFILLED = 'ADD_RESTAURANT_FULFILLED';
 export const ADD_RESTAURANT_REJECTED = 'ADD_RESTAURANT_REJECTED';
 export const CHANGE_URL = 'CHANGE_URL';
+
+
+const fetchRestaurantSuccess = createAction(FETCH_RESTAURANTS_FULFILLED);
+const fetchRestaurantfaliure = createAction(FETCH_RESTAURANTS_REJECTED);
+
+const addRestaurantSuccess = createAction(ADD_RESTAURANT_FULFILLED);
+const addRestaurantfaliure = createAction(ADD_RESTAURANT_REJECTED);
 
 export const fetchRestaurants = url => (
     function(dispatch){
@@ -10,10 +19,10 @@ export const fetchRestaurants = url => (
             .then(res => res.json())
             .then(
                 (result) => {
-                    dispatch({type: FETCH_RESTAURANTS_FULFILLED, payload: result})
+                    dispatch(fetchRestaurantSuccess(result))
                 },
                 (error) => {
-                    dispatch({type: FETCH_RESTAURANTS_REJECTED, payload: error})
+                    dispatch(fetchRestaurantfaliure(error))
                 }
             )
     });
@@ -36,10 +45,10 @@ export const addRestaurant = (url, body) => (
             .then(res => res.json())
             .then(
                 (result) => {
-                    dispatch({type: ADD_RESTAURANT_FULFILLED, payload: result})
+                    dispatch(addRestaurantSuccess(result))
                 },
                 (error) => {
-                    dispatch({type: ADD_RESTAURANT_REJECTED, payload: error})
+                    dispatch(addRestaurantfaliure(error))
                 }
             )
     });
