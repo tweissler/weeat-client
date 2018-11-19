@@ -15,11 +15,12 @@
 
 .header-text {
     display: inline-block;
-    font-weight: 500;
-    font-size: 120px;
+    font-weight: 700;
+    font-size: 130px;
     margin: 0;
-    color: floralwhite;
+    color: dimgrey;
     text-shadow: 2px 2px lightgrey;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
 .sub-header-text {

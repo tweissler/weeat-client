@@ -6,11 +6,10 @@
 }
 
 .map {
-    height: 65vh;
-    width: 60%;
+    flex-grow: 25;
 }
 
-.location {
+.location-icon {
     height: 30px;
     width: 30px;
 }

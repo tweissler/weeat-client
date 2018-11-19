@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import './Map.css'
 
-const RestOnMap = ({ text }) => <div className='map-name'><img className='location' src={require('../../images/location.png')}/>{text}</div>;
+const RestOnMap = ({name}) => <div className='map-name'><img className='location-icon' src={require('../../images/location.png')}/>{name}</div>;
 
 class Map extends Component {
 
@@ -25,9 +25,8 @@ class Map extends Component {
                         return <RestOnMap
                             lat={coordinates[0]}
                             lng={coordinates[1]}
-                            text={rest.name}/>
+                            name={rest.name}/>
                     })}
-
                 </GoogleMapReact>
             </div>
 
