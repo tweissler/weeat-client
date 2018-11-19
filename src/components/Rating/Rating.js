@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Rating.css';
 import {RATING_OPTIONS} from '../FilterBar/FiltersBar';
+import PropTypes from 'prop-types';
 
 class Rating extends Component {
     render() {
@@ -17,5 +18,9 @@ class Rating extends Component {
         );
     }
 }
+
+Rating.propTypes = {
+    rating: PropTypes.integrity
+};
 
 export default Rating;

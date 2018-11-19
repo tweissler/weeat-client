@@ -23,7 +23,6 @@ class NewRestaurant extends Component {
     }
 
     handleAddRestaurant = (values) => {
-        debugger
         this.props.addRestaurant("http://0.0.0.0:3000/restaurants", {name: values.name, address: values.address,
             cuisine: values.cuisine, tenbis: values.tenbis, deliveryTime: values.deliveryTime});
         this.closeDialog();
