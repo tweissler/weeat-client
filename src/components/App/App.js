@@ -48,10 +48,10 @@ class App extends Component {
 
 const mapStateToProps = state => {
     return{
-        restaurants: state.restaurants.restaurants,
-        isLoaded: state.restaurants.isLoaded,
-        error: state.restaurants.error,
-        url: state.restaurants.url,
+        restaurants: state.restaurantsReducer.restaurants,
+        isLoaded: state.restaurantsReducer.isLoaded,
+        error: state.restaurantsReducer.error,
+        url: state.restaurantsReducer.url,
     }
 }
 

@@ -44,7 +44,7 @@ class NewRestaurant extends Component {
 
 const mapStateToProps = state => {
     return{
-        addedWorked: state.restaurants.addedWorked,
+        addedWorked: state.restaurantsReducer.addedWorked,
     }
 }
 
