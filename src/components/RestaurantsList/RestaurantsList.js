@@ -12,7 +12,7 @@ class RestaurantsList extends Component {
             <div className="restaurants-list">
                 <table>
                     {restaurants.map(rest => {
-                        return <Restaurant key={rest.name} rest={rest}/>
+                        return <Restaurant className='restaurant' key={rest.name} rest={rest}/>
                     })}
                 </table>
             </div>

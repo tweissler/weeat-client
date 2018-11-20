@@ -35,8 +35,7 @@ class NewRestForm extends Component {
                         </Field>
                     </div>
                     <div>
-                        <Field className='check-box' name="tenbis" id="tenbis" component="input" type="checkbox"/>
-                        <label className='label' htmlFor="tenbis">Supports 10bis</label>
+                        <Field className='check-box' name="tenbis" component={RenderInput} type="checkbox" label='Supports 10bis'/>
                     </div>
                     <div className='buttons'>
                         <button className='button' type="submit"  disabled={submitting}>Add</button>
@@ -52,7 +51,7 @@ class NewRestForm extends Component {
 const RenderInput = ({input, label, type, meta: { touched, error }}) => (
     <div>
         <label className='label'>{label}</label>
-        {touched && (error && <span className='error'>*{error}</span>)}
+        {touched && error && <span className='error'>*{error}</span>}
         <div>
             <input className='input' {...input} placeholder={label} type={type} />
         </div>
@@ -62,7 +61,7 @@ const RenderInput = ({input, label, type, meta: { touched, error }}) => (
 const RenderSelect = ({input, label, type, meta: { touched, error }, children}) => (
     <div>
         <label className='label'>{label}</label>
-        {touched && (error && <span className='error'>*{error}</span>)}
+        {touched && error && <span className='error'>*{error}</span>}
         <div>
             <select className='select' {...input} placeholder={label} type={type} >
                 {children}
