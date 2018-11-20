@@ -4,15 +4,11 @@ import './index.css';
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from "react-redux";
-import {applyMiddleware, createStore} from "redux"
-import thunk from "redux-thunk"
-import restaurantReducer from './reducers/restaurantsReducer'
 import { BrowserRouter, Route } from 'react-router-dom'
-
-const store = createStore(restaurantReducer, applyMiddleware(thunk))
+import configureStore from './store/configureStore';
 
 ReactDOM.render(
-<Provider store={store}>
+<Provider store={configureStore()}>
     <BrowserRouter>
         <Route path='/' component={App}/>
     </BrowserRouter>

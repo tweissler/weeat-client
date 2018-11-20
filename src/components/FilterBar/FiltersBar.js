@@ -3,19 +3,21 @@ import Filter from '../Filter/Filter';
 import "./FilterBar.css"
 import { cuisines } from '../../cuisines';
 
+export const DELIVERY_TIMES = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120];
+export const RATING_OPTIONS = [1,2,3];
+
 class FiltersBar extends Component {
 
     constructor(props){
         super(props)
         this.filterOptions = {
-            "min_rating": [1,2,3],
-            "max_delivery_time": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120],
+            "min_rating": RATING_OPTIONS,
+            "max_delivery_time": DELIVERY_TIMES,
             "by_cuisine": cuisines
         }
-        this.onSelectFilter = this.onSelectFilter.bind(this);
     }
 
-    onSelectFilter(paramToAdd, valueToAdd){
+    onSelectFilter = (paramToAdd, valueToAdd) => {
         this.props.addQueryParam(paramToAdd, valueToAdd);
     }
 

@@ -1,0 +1,15 @@
+.map-name{
+    color: dimgrey;
+    font-size: 15px;
+    font-weight: 800;
+    text-shadow: 1px 1px lightgrey;
+}
+
+.map {
+    flex-grow: 25;
+}
+
+.location-icon {
+    height: 30px;
+    width: 30px;
+}

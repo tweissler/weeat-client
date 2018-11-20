@@ -1,17 +1,27 @@
-export default function reducer(state = {
+import { FETCH_RESTAURANTS_FULFILLED,  FETCH_RESTAURANTS_REJECTED, ADD_RESTAURANT_FULFILLED, ADD_RESTAURANT_REJECTED, CHANGE_URL} from '../actions/restaurantsActions';
+import { handleActions } from 'redux-actions';
+
+export const restaurantsReducer = handleActions({
+    [FETCH_RESTAURANTS_FULFILLED]: (state, action) => {
+        return {...state, isLoaded: true, restaurants: action.payload};
+    },
+    [FETCH_RESTAURANTS_REJECTED]: (state, action) => {
+        return {...state, isLoaded: false, error: action.payload};
+    },
+    [ADD_RESTAURANT_FULFILLED]: (state, action) => {
+        return {...state, addedWorked: true, restaurants: [...state.restaurants, action.payload]};
+    },
+    [ADD_RESTAURANT_REJECTED]: (state, action) => {
+        return {...state, addedWorked: false, error: action.payload};
+    },
+    [CHANGE_URL]: (state, action) => {
+        return {...state, url: action.payload};
+    },
+}, {
     restaurants: [],
     isLoaded: false,
     error: null,
-}, action) {
-    switch(action.type){
-        case "FETCH_RESTAURANTS_FULFILLED": {
-            return {...state, isLoaded:true, restaurants: action.payload}
-        }
-        case "FETCH_RESTAURANTS_REJECTED": {
-            return {...state, isLoaded:true, error: action.payload}
-        }
-        default: {
-            return state;
-        }
-    }
-}
+    addedWorked: false,
+    url: new URL("http://0.0.0.0:3000/restaurants")
+});
+

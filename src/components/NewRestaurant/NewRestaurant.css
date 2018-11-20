@@ -1,0 +1,31 @@
+.portal {
+    position: fixed;
+    width: 110%;
+    height: 110%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0,0,0, 0.5);
+}
+
+.add-button {
+    background: url('../../images/plus.png');
+    background-size: 69px 69px;
+    height: 70px;
+    width: 70px;
+    margin-top: 20px;
+    margin-right: 20px;
+    position:absolute;
+    top:0;
+    right:0;
+    border-radius: 50%;
+    display: block;
+}
+
+.add-button:hover,
+.add-button:focus {
+    cursor: pointer;
+}
+

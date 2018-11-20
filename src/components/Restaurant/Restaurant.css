@@ -4,7 +4,7 @@
     font-size: 20px;
     margin: 10px;
     color: black;
-    margin-top: 30px;
+    width: 150px;
 }
 
 .rest-name{
@@ -17,10 +17,14 @@
     color: black;
     border-collapse: collapse;
     border-style: hidden;
+    width: 500px;
+    justify-content: left;
 }
 
 .rest{
-    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    background-color: ghostwhite;
 }
 
 .tenbis{
