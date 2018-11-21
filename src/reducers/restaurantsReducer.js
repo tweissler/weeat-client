@@ -22,6 +22,6 @@ export const restaurantsReducer = handleActions({
     isLoaded: false,
     error: null,
     addedWorked: false,
-    url: new URL((process.env.REACT_APP_SERVER_ADDRESS || "https://stark-mesa-42774.herokuapp.com") + "/restaurants")
+    url: new URL((process.env.REACT_APP_SERVER_ADDRESS) + "/restaurants")
 });
 

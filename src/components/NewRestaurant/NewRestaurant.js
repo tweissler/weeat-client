@@ -23,7 +23,7 @@ class NewRestaurant extends Component {
     }
 
     handleAddRestaurant = (values) => {
-        this.props.addRestaurant("http://0.0.0.0:3000/restaurants", {name: values.name, address: values.address,
+        this.props.addRestaurant(process.env.REACT_APP_SERVER_ADDRESS + "/restaurants", {name: values.name, address: values.address,
             cuisine: values.cuisine, tenbis: values.tenbis, deliveryTime: values.deliveryTime});
         this.closeDialog();
     }
