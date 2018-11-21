@@ -15,3 +15,5 @@ ReactDOM.render(
 </Provider>, document.getElementById('root'));
 
 serviceWorker.unregister();
+
+console.log("process.env", process.env)
