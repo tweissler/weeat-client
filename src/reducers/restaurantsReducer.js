@@ -22,6 +22,6 @@ export const restaurantsReducer = handleActions({
     isLoaded: false,
     error: null,
     addedWorked: false,
-    url: new URL("http://0.0.0.0:3000/restaurants")
+    url: new URL(process.env.SERVER_ADDRESS + "/restaurants")
 });
 
